@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiTemplate.ViewModels"
+             x:Class="MauiTemplate.Views.Pages.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="False">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+            
+            <Image Source="dotnet_bot.png" 
+                   HeightRequest="200"
+                   Aspect="AspectFit"
+                   Margin="0,0,0,30"/>
+            
+            <Label Text="Welcome Back"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            
+            <Label Text="Sign in to continue"
+                   FontSize="16"
+                   TextColor="{StaticResource Gray600}"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,30"/>
+            
+            <Border StrokeThickness="1"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="{StaticResource Gray100}">
+                <Entry Placeholder="Username"
+                       Text="{Binding Username}"
+                       Margin="10,5"/>
+            </Border>
+            
+            <Border StrokeThickness="1"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="{StaticResource Gray100}">
+                <Entry Placeholder="Password"
+                       Text="{Binding Password}"
+                       IsPassword="True"
+                       Margin="10,5"/>
+            </Border>
+            
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox IsChecked="{Binding RememberMe}"/>
+                <Label Text="Remember me"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            
+            <Button Text="Sign In"
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Margin="0,20,0,0"
+                    HeightRequest="50"
+                    CornerRadius="10"/>
+            
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                             IsVisible="{Binding IsBusy}"
+                             Color="{StaticResource Primary}"
+                             Margin="0,10,0,0"/>
+            
+            <Label Text="Or sign in with"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource Gray600}"
+                   Margin="0,20,0,10"/>
+            
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Button Text="Azure AD"
+                        Command="{Binding LoginWithAzureAdCommand}"
+                        BackgroundColor="{StaticResource Secondary}"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="10"
+                        Grid.Column="0"/>
+                
+                <Button Text="Auth0"
+                        Command="{Binding LoginWithAuth0Command}"
+                        BackgroundColor="{StaticResource Tertiary}"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="10"
+                        Grid.Column="1"/>
+            </Grid>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
