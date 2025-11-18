@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTemplate.Views.Modals.SettingsModal"
+             Title="Settings">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <Label Text="Settings"
+                   FontSize="32"
+                   FontAttributes="Bold"/>
+            
+            <Border StrokeThickness="1"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Padding="15" Spacing="15">
+                    
+                    <Label Text="Appearance"
+                           FontSize="18"
+                           FontAttributes="Bold"/>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Dark Mode"
+                               VerticalOptions="Center"
+                               HorizontalOptions="FillAndExpand"/>
+                        <Switch IsToggled="False"/>
+                    </HorizontalStackLayout>
+                    
+                    <BoxView HeightRequest="1" 
+                            Color="{StaticResource Gray200}"/>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Notifications"
+                               VerticalOptions="Center"
+                               HorizontalOptions="FillAndExpand"/>
+                        <Switch IsToggled="True"/>
+                    </HorizontalStackLayout>
+                    
+                </VerticalStackLayout>
+            </Border>
+            
+            <Border StrokeThickness="1"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Padding="15" Spacing="15">
+                    
+                    <Label Text="Data and Storage"
+                           FontSize="18"
+                           FontAttributes="Bold"/>
+                    
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Offline Mode"
+                               VerticalOptions="Center"
+                               HorizontalOptions="FillAndExpand"/>
+                        <Switch IsToggled="True"/>
+                    </HorizontalStackLayout>
+                    
+                    <BoxView HeightRequest="1" 
+                            Color="{StaticResource Gray200}"/>
+                    
+                    <Button Text="Clear Cache"
+                            BackgroundColor="{StaticResource Gray300}"
+                            TextColor="{StaticResource Gray900}"/>
+                    
+                </VerticalStackLayout>
+            </Border>
+            
+            <Border StrokeThickness="1"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Padding="15" Spacing="10">
+                    
+                    <Label Text="About"
+                           FontSize="18"
+                           FontAttributes="Bold"/>
+                    
+                    <Label Text="Version: 1.0.0"
+                           TextColor="{StaticResource Gray600}"/>
+                    
+                    <Label Text="© 2025 MAUI Template"
+                           TextColor="{StaticResource Gray600}"/>
+                    
+                </VerticalStackLayout>
+            </Border>
+            
+            <Button Text="Close"
+                    Clicked="OnCloseClicked"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Margin="0,20,0,0"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

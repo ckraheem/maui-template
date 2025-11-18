@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiTemplate.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:MauiTemplate.Views.Pages"
+    Title="MAUI Template"
+    FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="200" BackgroundColor="{StaticResource Primary}">
+            <VerticalStackLayout Padding="20" VerticalOptions="End">
+                <Label Text="MAUI Template"
+                       TextColor="White"
+                       FontSize="24"
+                       FontAttributes="Bold"/>
+                <Label Text="v1.0.0"
+                       TextColor="White"
+                       FontSize="14"
+                       Opacity="0.8"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home" Icon="{FontImage Glyph='🏠', Size=24}">
+        <ShellContent Route="main"
+                      ContentTemplate="{DataTemplate pages:ItemsPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Items" Icon="{FontImage Glyph='📋', Size=24}">
+        <ShellContent Route="items"
+                      ContentTemplate="{DataTemplate pages:ItemsPage}"/>
+    </FlyoutItem>
+
+    <MenuItem Text="Settings" 
+              IconImageSource="{FontImage Glyph='⚙', Size=24}"
+              Clicked="OnSettingsClicked"/>
+    
+    <MenuItem Text="Logout" 
+              IconImageSource="{FontImage Glyph='🚪', Size=24}"
+              Clicked="OnLogoutClicked"/>
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="20" BackgroundColor="{StaticResource Gray100}">
+            <Label Text="© 2025 MAUI Template"
+                   FontSize="12"
+                   TextColor="{StaticResource Gray600}"
+                   HorizontalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+
+</Shell>

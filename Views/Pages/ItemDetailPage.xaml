@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiTemplate.ViewModels"
+             x:Class="MauiTemplate.Views.Pages.ItemDetailPage"
+             x:DataType="vm:ItemDetailViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <Border StrokeThickness="0"
+                   HeightRequest="200"
+                   StrokeShape="RoundRectangle 10"
+                   BackgroundColor="{StaticResource Primary}">
+                <Label Text="📦"
+                      FontSize="80"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+            </Border>
+            
+            <Label Text="Title"
+                   FontSize="14"
+                   TextColor="{StaticResource Gray600}"/>
+            <Border StrokeThickness="1"
+                   Stroke="{StaticResource Gray200}"
+                   StrokeShape="RoundRectangle 10"
+                   BackgroundColor="{StaticResource Gray100}">
+                <Entry Text="{Binding Item.Title}"
+                      Placeholder="Enter title"
+                      Margin="10,5"/>
+            </Border>
+            
+            <Label Text="Description"
+                   FontSize="14"
+                   TextColor="{StaticResource Gray600}"/>
+            <Border StrokeThickness="1"
+                   Stroke="{StaticResource Gray200}"
+                   StrokeShape="RoundRectangle 10"
+                   BackgroundColor="{StaticResource Gray100}">
+                <Editor Text="{Binding Item.Description}"
+                       Placeholder="Enter description"
+                       HeightRequest="120"
+                       Margin="10,5"/>
+            </Border>
+            
+            <Label Text="Image URL"
+                   FontSize="14"
+                   TextColor="{StaticResource Gray600}"/>
+            <Border StrokeThickness="1"
+                   Stroke="{StaticResource Gray200}"
+                   StrokeShape="RoundRectangle 10"
+                   BackgroundColor="{StaticResource Gray100}">
+                <Entry Text="{Binding Item.ImageUrl}"
+                      Placeholder="Enter image URL"
+                      Margin="10,5"/>
+            </Border>
+            
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,20,0,0">
+                <Button Text="Save"
+                       Command="{Binding SaveCommand}"
+                       BackgroundColor="{StaticResource Primary}"
+                       TextColor="White"
+                       HeightRequest="50"
+                       CornerRadius="10"
+                       Grid.Column="0"/>
+                
+                <Button Text="Cancel"
+                       Command="{Binding CancelCommand}"
+                       BackgroundColor="{StaticResource Gray300}"
+                       TextColor="{StaticResource Gray900}"
+                       HeightRequest="50"
+                       CornerRadius="10"
+                       Grid.Column="1"/>
+            </Grid>
+            
+            <Button Text="Delete"
+                   Command="{Binding DeleteCommand}"
+                   IsVisible="{Binding IsEditMode}"
+                   BackgroundColor="Red"
+                   TextColor="White"
+                   HeightRequest="50"
+                   CornerRadius="10"/>
+            
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                             IsVisible="{Binding IsBusy}"
+                             Color="{StaticResource Primary}"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
